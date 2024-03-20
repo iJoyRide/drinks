@@ -8,7 +8,7 @@ from .serializers import DrinksSerializer
 
 
 @api_view(["GET", "POST"])
-def drink_list(request):
+def drink_list(request, format=None):
 
     # get all the drinks
     # serialize them
@@ -25,7 +25,7 @@ def drink_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(["GET", "PUT", "DELETE"])
-def drink_detail(request, id):
+def drink_detail(request, id, format=None):
     try:
         drink = Drink.objects.get(pk=id)
     except Drink.DoesNotExist:
